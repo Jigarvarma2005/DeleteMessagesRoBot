@@ -73,7 +73,7 @@ async def del_selective_command_fn(client: Bot, message: Message):
                 flt_type.append(_del_type)
 
     current_selections = AKTIFPERINTAH.get(message.chat.id)
-    if len(flt_type) == 0 and not current_selections:
+    if not flt_type and not current_selections:
         if status_message:
             await status_message.edit(NOT_USED_DEL_FROM_DEL_TO_MESSAGE)
         else:

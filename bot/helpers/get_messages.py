@@ -39,10 +39,9 @@ async def get_messages(
             min_message_id <= msg.message_id and
             max_message_id >= msg.message_id
         ):
-            if len(filter_type_s) > 0:
+            if filter_type_s:
                 for filter_type in filter_type_s:
-                    obj = getattr(msg, filter_type)
-                    if obj:
+                    if obj := getattr(msg, filter_type):
                         messages_to_delete.append(msg.message_id)
             else:
                 messages_to_delete.append(msg.message_id)
